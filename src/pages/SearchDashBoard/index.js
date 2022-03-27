@@ -1,18 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import SearchInput from '../../components/SearchInput'
+
 function SearchDashBoard() {
 
   return (
-    <SearchDashBoardWrapper>
-      SearchDashBoard
-    </SearchDashBoardWrapper>
+    <SearchDashBoardMain>
+      <SearchInput />
+    </SearchDashBoardMain>
   )
 }
 
 export default SearchDashBoard
 
-const SearchDashBoardWrapper = styled.div`
+const SearchDashBoardMain = styled.main`
   width: 95vw;
   max-width: 1170px;
   
