@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 import SearchInput from '../../components/SearchInput'
+import Info from '../../components/Info'
 
 function SearchDashBoard() {
 
   return (
     <SearchDashBoardMain>
       <SearchInput />
+      <Info />
     </SearchDashBoardMain>
   )
 }
