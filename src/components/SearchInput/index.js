@@ -37,6 +37,7 @@ const InputWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex: 1;
   
   font-size: 1.3rem;
 `
@@ -48,6 +49,8 @@ const InputStyle = styled.input`
   font-size: 1.3rem;
   letter-spacing: 0.1rem;
   color: hsl(209, 34%, 30%);
+  
+  flex: 1;
 `
 
 const SearchButton = styled.button`

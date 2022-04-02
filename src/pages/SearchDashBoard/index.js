@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import SearchInput from '../../components/SearchInput'
 import Info from '../../components/Info'
+import UserInfo from '../../components/UserInfo'
 
 function SearchDashBoard() {
 
@@ -10,6 +11,7 @@ function SearchDashBoard() {
     <SearchDashBoardMain>
       <SearchInput />
       <Info />
+      <UserInfo />
     </SearchDashBoardMain>
   )
 }

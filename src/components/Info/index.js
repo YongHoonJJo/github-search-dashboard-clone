@@ -79,6 +79,7 @@ const InfoCardWrap = styled.div`
   
   display: flex;
   gap: 3rem;
+  flex: 1;
 `
 
 const IconCircle = styled.div`
