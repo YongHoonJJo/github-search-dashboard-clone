@@ -16,14 +16,14 @@ const InfoCard = ({ icon, label, value, color, bgColor }) => {
   )
 }
 
-function Info() {
+function Info({ publicRepos, publicGists, followers, following }) {
 
   const items = [
     {
       id: 1,
       icon: <GoRepo className='icon' />,
       label: 'Repos',
-      value: 65,
+      value: publicRepos,
       color: '#da4a91',
       bgColor: '#ffe0f0'
     },
@@ -31,7 +31,7 @@ function Info() {
       id: 2,
       icon: <FiUsers className='icon' />,
       label: 'Followers',
-      value: 61,
+      value: followers,
       color: 'hsl(185, 62%, 45%)',
       bgColor: 'hsl(186, 100%, 94%)',
     },
@@ -39,7 +39,7 @@ function Info() {
       id: 3,
       icon: <FiUserPlus className='icon' />,
       label: 'Following',
-      value: 106,
+      value: following,
       color: '#5d55fa',
       bgColor: '#e6e6ff'
     },
@@ -47,11 +47,13 @@ function Info() {
       id: 4,
       icon: <GoGist className='icon' />,
       label: 'Gists',
-      value: 12,
+      value: publicGists,
       color: '#f0b429',
       bgColor: '#fffbea'
     },
   ];
+
+  console.log({publicRepos, publicGists, followers, following})
 
   return (
     <InfoSection>

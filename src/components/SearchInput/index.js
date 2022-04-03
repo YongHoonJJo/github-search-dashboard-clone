@@ -3,13 +3,15 @@ import styled from 'styled-components';
 
 import { MdSearch } from 'react-icons/md';
 
-function SearchInput() {
+function SearchInput({ searchText, chageHandler }) {
 
   return (
     <SearchInputSection>
       <InputWrapper>
         <MdSearch />
         <InputStyle
+          value={searchText}
+          onChange={(e) => chageHandler(e.target.value)}
           placeholder={'Enter Github User'}
         />
         <SearchButton onClick={() => {}}>Search</SearchButton>

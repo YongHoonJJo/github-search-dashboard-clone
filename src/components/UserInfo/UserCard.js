@@ -2,28 +2,30 @@ import React from 'react'
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
 
-const UserCard = () => {
+const UserCard = ({avatar_url, name, twitter_username, html_url, bio, company, location, blog }) => {
   return (
     <UserCardWrap>
       <UserCardHeader>
         <RoundImgBox w={75} h={75}>
-          <Img src="https://avatars.githubusercontent.com/u/74251593?v=4" alt="profile-img"/>
+          <Img src={avatar_url} alt="profile-img"/>
         </RoundImgBox>
         <UserCardDesc>
-          <h3>Jost</h3>
-          <h4>@-</h4>
+          <h3>{name}</h3>
+          <h4>@{twitter_username || '-'}</h4>
         </UserCardDesc>
-        <FollowButton>Follow</FollowButton>
+        <a href={html_url}>
+          <FollowButton>Follow</FollowButton>
+        </a>
       </UserCardHeader>
-      <UserCardBio>Creator of Coding Addict</UserCardBio>
+      <UserCardBio>{bio || ' '}</UserCardBio>
       <OtherInfo>
-        <MdBusiness /> {`Coding Addict`}
+        <MdBusiness /> {company}
       </OtherInfo>
       <OtherInfo>
-        <MdLocationOn /> {`경기도 시흥`}
+        <MdLocationOn /> {location || 'Earth'}
       </OtherInfo>
       <OtherInfo>
-        <MdLink /> <ColorSpan>{`www.johnsmilga.com`}</ColorSpan>
+        <MdLink /> <ColorSpan>{blog}</ColorSpan>
       </OtherInfo>
     </UserCardWrap>
   )

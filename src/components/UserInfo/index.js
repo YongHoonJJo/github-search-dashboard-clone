@@ -14,13 +14,13 @@ const UserInfoCard = ({title, children}) => {
   )
 }
 
-function UserInfo() {
+function UserInfo(props) {
 
   return (
     <UserInfoSection>
       <SectionWrap>
         <UserInfoCard title={'User'}>
-          <UserCard />
+          <UserCard {...props} />
         </UserInfoCard>
         <UserInfoCard title={'Followers'}>
           <Followers />
