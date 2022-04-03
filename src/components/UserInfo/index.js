@@ -23,7 +23,7 @@ function UserInfo(props) {
           <UserCard {...props} />
         </UserInfoCard>
         <UserInfoCard title={'Followers'}>
-          <Followers />
+          <Followers login={props.login} />
         </UserInfoCard>
       </SectionWrap>
     </UserInfoSection>

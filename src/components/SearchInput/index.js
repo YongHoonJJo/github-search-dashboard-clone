@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { MdSearch } from 'react-icons/md';
 
-function SearchInput({ searchText, chageHandler }) {
+function SearchInput({ searchText, chageHandler, searchUser }) {
 
   return (
     <SearchInputSection>
@@ -14,7 +14,7 @@ function SearchInput({ searchText, chageHandler }) {
           onChange={(e) => chageHandler(e.target.value)}
           placeholder={'Enter Github User'}
         />
-        <SearchButton onClick={() => {}}>Search</SearchButton>
+        <SearchButton onClick={searchUser}>Search</SearchButton>
       </InputWrapper>
       <RequestsText>Requests: 48 / 60</RequestsText>
     </SearchInputSection>

@@ -28,9 +28,12 @@ function SearchDashBoard() {
   })
   const [searchText, setSearchText] = useState('')
 
+  const searchUser = () => {
+    fetchUser(searchText)
+  }
+
   const fetchUser = async (user) => {
     const resp = await usersApi.getUser(user)
-    console.log({resp})
     setUserInfo(resp.data)
   }
 
@@ -39,6 +42,7 @@ function SearchDashBoard() {
   }, [])
 
   const {
+    login,
     public_repos, public_gists, followers, following,
   } = userInfo
 
@@ -47,6 +51,7 @@ function SearchDashBoard() {
       <SearchInput
         searchText={searchText}
         chageHandler={(text) => setSearchText(text)}
+        searchUser={searchUser}
       />
       <Info
         publicRepos={public_repos}
@@ -55,6 +60,7 @@ function SearchDashBoard() {
         following={following}
       />
       <UserInfo
+        login={login}
         {...userInfo}
       />
     </SearchDashBoardMain>

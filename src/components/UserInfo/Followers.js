@@ -1,52 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 
-const Followers = () => {
+import usersApi from "../../services/apis/users";
 
-  const followers = [
-    {
-      profilImg: 'https://avatars.githubusercontent.com/u/74251594',
-      name: 'Tarasis1',
-      link: 'https://github.com/tarasis'
-    },
-    {
-      profilImg: 'https://avatars.githubusercontent.com/u/74251595',
-      name: 'Tarasis2',
-      link: 'https://github.com/tarasis'
-    },
-    {
-      profilImg: 'https://avatars.githubusercontent.com/u/74251596',
-      name: 'Tarasis3',
-      link: 'https://github.com/tarasis'
-    },
-    {
-      profilImg: 'https://avatars.githubusercontent.com/u/74251597',
-      name: 'Tarasis4',
-      link: 'https://github.com/tarasis'
-    },
-    {
-      profilImg: 'https://avatars.githubusercontent.com/u/74251598',
-      name: 'Tarasis5',
-      link: 'https://github.com/tarasis'
-    },
-    {
-      profilImg: 'https://avatars.githubusercontent.com/u/74251599',
-      name: 'Tarasis6',
-      link: 'https://github.com/tarasis'
-    },
-    {
-      profilImg: 'https://avatars.githubusercontent.com/u/74251590',
-      name: 'Tarasis7',
-      link: 'https://github.com/tarasis'
-    },
-  ].map((d, idx) => ({...d, key: idx}))
+const Followers = ({login}) => {
+  const [followers, setFollowers] = useState([])
+
+  const fetchFollowers = async (user) => {
+    const res = await usersApi.getFollowers(user)
+
+    const resp = res.data.map(d => ({
+      profileImg: d.avatar_url,
+      name: d.login,
+      link: d.html_url,
+      key: d.id
+    }))
+
+    setFollowers(resp)
+  }
+
+  useEffect(() => {
+    fetchFollowers(login || 'YongHoonJJo')
+  }, [login])
 
   return (
     <FollowersWrap>
       {followers.map(f => (
         <FollowerItem key={f.key}>
           <ImgBox>
-            <Img src={f.profilImg} alt="profile-img"/>
+            <Img src={f.profileImg} alt="profile-img"/>
           </ImgBox>
           <div>
             <FollowerName>{f.name}</FollowerName>
@@ -101,4 +83,5 @@ const FollowerAddr = styled.a`
   line-height: 1.5;
   cursor: pointer;
   text-decoration: none;
+  color: hsl(210, 22%, 49%);
 `
