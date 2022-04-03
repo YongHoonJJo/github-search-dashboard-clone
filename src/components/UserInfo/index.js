@@ -2,30 +2,61 @@ import React from 'react'
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
 
-const UserCard = () => {
+import UserCard from './UserCard'
+
+const Followers = () => {
+
+  const followers = [
+    {
+      profilImg: 'https://avatars.githubusercontent.com/u/74251594',
+      name: 'Tarasis1',
+      link: 'https://github.com/tarasis'
+    },
+    {
+      profilImg: 'https://avatars.githubusercontent.com/u/74251595',
+      name: 'Tarasis2',
+      link: 'https://github.com/tarasis'
+    },
+    {
+      profilImg: 'https://avatars.githubusercontent.com/u/74251596',
+      name: 'Tarasis3',
+      link: 'https://github.com/tarasis'
+    },
+    {
+      profilImg: 'https://avatars.githubusercontent.com/u/74251597',
+      name: 'Tarasis4',
+      link: 'https://github.com/tarasis'
+    },
+    {
+      profilImg: 'https://avatars.githubusercontent.com/u/74251598',
+      name: 'Tarasis5',
+      link: 'https://github.com/tarasis'
+    },
+    {
+      profilImg: 'https://avatars.githubusercontent.com/u/74251599',
+      name: 'Tarasis6',
+      link: 'https://github.com/tarasis'
+    },
+    {
+      profilImg: 'https://avatars.githubusercontent.com/u/74251590',
+      name: 'Tarasis7',
+      link: 'https://github.com/tarasis'
+    },
+  ].map((d, idx) => ({...d, key: idx}))
+
   return (
-    <UserCardWrap>
-      <UserCardHeader>
-        <RoundImgBox w={75} h={75}>
-          <Img src="https://avatars.githubusercontent.com/u/74251593?v=4" alt="profile-img"/>
-        </RoundImgBox>
-        <UserCardDesc>
-          <h3>Jost</h3>
-          <h4>@-</h4>
-        </UserCardDesc>
-        <FollowButton>Follow</FollowButton>
-      </UserCardHeader>
-      <UserCardBio>Creator of Coding Addict</UserCardBio>
-      <OtherInfo>
-        <MdBusiness /> {`Coding Addict`}
-      </OtherInfo>
-      <OtherInfo>
-        <MdLocationOn /> {`경기도 시흥`}
-      </OtherInfo>
-      <OtherInfo>
-        <MdLink /> <ColorSpan>{`www.johnsmilga.com`}</ColorSpan>
-      </OtherInfo>
-    </UserCardWrap>
+    <FollowersWrap>
+      {followers.map(f => (
+        <FollowerItem key={f.key}>
+          <ImgBox>
+            <Img src={f.profilImg} alt="profile-img"/>
+          </ImgBox>
+          <div>
+            <FollowerName>{f.name}</FollowerName>
+            <FollowerAddr href={f.link}>{f.link}</FollowerAddr>
+          </div>
+        </FollowerItem>))}
+    </FollowersWrap>
   )
 }
 
@@ -47,7 +78,7 @@ function UserInfo() {
           <UserCard />
         </UserInfoCard>
         <UserInfoCard title={'Followers'}>
-          b
+          <Followers />
         </UserInfoCard>
       </SectionWrap>
     </UserInfoSection>
@@ -90,84 +121,46 @@ const UserInfoCardLabel = styled.p`
   transform: translateY(-100%);
 `
 
-/** UserCard **/
-const UserCardWrap = styled.div`
-  padding: 1.5rem 2rem;
-`
-
-const UserCardHeader = styled.header`
-  display: flex; 
-  align-items: center;
+/** Followers **/
+const FollowersWrap = styled.div`
+  overflow: scroll;
+  height: 260px;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
   
-  margin-bottom: 1rem;
+  height: 260px;
 `
 
-const UserCardDesc = styled.div`
-  flex: 1;
-  
-  h3 {
-    margin-bottom: 0.25rem;
-    line-height: 1;
-    font-size: 1rem;
-  }
-  
-  h4 {
-    color: hsl(210, 22%, 49%);
-  }
-`
-
-const FollowButton = styled.button`
-  cursor: pointer;
-  border: 1px solid hsl(185, 62%, 45%);
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  text-transform: capitalize;
-  transition: all 0.3s linear;
-  
-  outline: none;
-  background: #fff;
-  color: hsl(185, 62%, 45%);
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 0.1rem;
-`
-
-const UserCardBio = styled.p`
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
-  color: hsl(209, 34%, 30%);
-`
-
-const OtherInfo = styled.p`
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 0.25rem;
-  
+const FollowerItem = styled.div`
+  padding: 0.15rem 0.5rem;
   display: flex;
   align-items: center;
-  color: hsl(210, 22%, 49%);
-  
-  svg {
-    margin-right: 0.5rem;
-    font-size: 1.3rem;
-  }
+  gap: 1rem;
 `
 
-const ColorSpan = styled.span`
-  color: hsl(185, 62%, 45%);
-`
-
-/** Common **/
-const RoundImgBox = styled.div`
-  width: ${({w}) => w}px;
-  height: ${({h}) => h}px;
-  
+const ImgBox = styled.div`
+  width: 45px;
+  height: 45px;
   border-radius: 70%;
   overflow: hidden;
 `
 
 const Img = styled.img`
   width: 100%;
+`
+
+const FollowerName = styled.h4`
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+`
+
+const FollowerAddr = styled.a`
+  font-size: 1rem;
+  line-height: 1.5;
+  cursor: pointer;
+  text-decoration: none;
 `
