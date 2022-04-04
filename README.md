@@ -1,5 +1,9 @@
 ## Github Dashboard Clone
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f83d4e69-ce0c-4c1e-83ea-300395647720/deploy-status)](https://app.netlify.com/sites/github-search-dashboard-clone-jost/deploys)
+
+<https://github-search-dashboard-clone-jost.netlify.app/>
+
 
 
 ### 요구사항
