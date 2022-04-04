@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import SearchInput from '../../components/SearchInput'
@@ -6,19 +6,10 @@ import Info from '../../components/Info'
 import UserInfo from '../../components/UserInfo'
 
 function SearchDashBoard() {
-  const [searchText, setSearchText] = useState('')
-
-  const searchUser = () => {
-
-  }
 
   return (
     <SearchDashBoardMain>
-      <SearchInput
-        searchText={searchText}
-        chageHandler={(text) => setSearchText(text)}
-        searchUser={searchUser}
-      />
+      <SearchInput/>
       <Info />
       <UserInfo />
     </SearchDashBoardMain>

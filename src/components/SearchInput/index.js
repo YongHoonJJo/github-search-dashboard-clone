@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
-
 import { MdSearch } from 'react-icons/md';
 
-function SearchInput({ searchText, chageHandler, searchUser }) {
+import useSearchUser from "./hooks/useSearchText";
+
+function SearchInput() {
+  const [searchText, setSearchText] = useState('')
+  const setSearchUser = useSearchUser()
+
+  const searchUser = () => {
+    if(searchText === '') return
+
+    setSearchUser(searchText)
+  }
 
   return (
     <SearchInputSection>
@@ -11,7 +20,7 @@ function SearchInput({ searchText, chageHandler, searchUser }) {
         <MdSearch />
         <InputStyle
           value={searchText}
-          onChange={(e) => chageHandler(e.target.value)}
+          onChange={(e) => setSearchText(e.target.value)}
           placeholder={'Enter Github User'}
         />
         <SearchButton onClick={searchUser}>Search</SearchButton>
