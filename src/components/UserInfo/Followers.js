@@ -1,38 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
-import usersApi from "../../services/apis/users";
+import useCurrentFollowers from "./hooks/useCurrentFollwers";
 
-const Followers = ({login}) => {
-  const [followers, setFollowers] = useState([])
-
-  const fetchFollowers = async (user) => {
-    const res = await usersApi.getFollowers(user)
-
-    const resp = res.data.map(d => ({
-      profileImg: d.avatar_url,
-      name: d.login,
-      link: d.html_url,
-      key: d.id
-    }))
-
-    setFollowers(resp)
-  }
-
-  useEffect(() => {
-    fetchFollowers(login || 'YongHoonJJo')
-  }, [login])
+const Followers = () => {
+  const followers = useCurrentFollowers()
 
   return (
     <FollowersWrap>
       {followers.map(f => (
-        <FollowerItem key={f.key}>
+        <FollowerItem key={f.id}>
           <ImgBox>
-            <Img src={f.profileImg} alt="profile-img"/>
+            <Img src={f.avatar_url} alt="profile-img"/>
           </ImgBox>
           <div>
-            <FollowerName>{f.name}</FollowerName>
-            <FollowerAddr href={f.link}>{f.link}</FollowerAddr>
+            <FollowerName>{f.login}</FollowerName>
+            <FollowerAddr href={f.html_url}>{f.html_url}</FollowerAddr>
           </div>
         </FollowerItem>))}
     </FollowersWrap>

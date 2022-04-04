@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
-
 import { GoRepo, GoGist } from 'react-icons/go';
 import { FiUsers, FiUserPlus } from 'react-icons/fi';
+
+import useCurrentUserInfo from './hooks/useCurrentUserInfo'
 
 const InfoCard = ({ icon, label, value, color, bgColor }) => {
   return (
@@ -16,14 +17,15 @@ const InfoCard = ({ icon, label, value, color, bgColor }) => {
   )
 }
 
-function Info({ publicRepos, publicGists, followers, following }) {
+function Info() {
+  const { public_repos, public_gists, followers, following } = useCurrentUserInfo()
 
   const items = [
     {
       id: 1,
       icon: <GoRepo className='icon' />,
       label: 'Repos',
-      value: publicRepos,
+      value: public_repos,
       color: '#da4a91',
       bgColor: '#ffe0f0'
     },
@@ -47,13 +49,11 @@ function Info({ publicRepos, publicGists, followers, following }) {
       id: 4,
       icon: <GoGist className='icon' />,
       label: 'Gists',
-      value: publicGists,
+      value: public_gists,
       color: '#f0b429',
       bgColor: '#fffbea'
     },
   ];
-
-  console.log({publicRepos, publicGists, followers, following})
 
   return (
     <InfoSection>

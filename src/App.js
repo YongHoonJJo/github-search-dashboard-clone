@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 
@@ -24,10 +24,10 @@ const InitialStyle = createGlobalStyle`
 
 function App() {
   return (
-    <Fragment>
+    <React.Suspense fallback={<div>loading...</div>}>
       <InitialStyle />
       <SearchDashBoard />
-    </Fragment>
+    </React.Suspense>
   );
 }
 

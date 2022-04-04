@@ -2,7 +2,11 @@ import React from 'react'
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
 
-const UserCard = ({avatar_url, name, twitter_username, html_url, bio, company, location, blog }) => {
+import useCurrentUserCardInfo from "./hooks/useCurrentUserCardInfo";
+
+const UserCard = () => {
+  const { avatar_url, name, twitter_username, html_url, bio, company, location, blog } = useCurrentUserCardInfo()
+
   return (
     <UserCardWrap>
       <UserCardHeader>
